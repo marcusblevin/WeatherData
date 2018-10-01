@@ -4,20 +4,20 @@ This program connects to the FTP server for [NOAA](https://www.ncdc.noaa.gov/) a
 
 Process is as follows:
 
-* 1. FTP to NOAA and download isd-history.csv - file includes all stations and data ranges for each
-* 2. Load CSV into ArrayList
-* 3. Filter down list to only include lines with WBAN numbers and with END dates greater than 2018
-* 4. Get list of years of END dates from file (currently 2018, potentially more as years progress)
-* 5. Insert any missing station IDs into stations table in database
-* 6. Step through stations, calculate time zone for station based on latitude/longitude 
-* 7. insert any new stations and update existing stations
-* 8. for each station, download gzip files from FTP
-* 9. Unzip file in memory
-* 10. Step through file and use ishJava to convert weather file to ArrayList
-* 11. convert GMT timestamp to local time
-* 12. calculate wet bulb and relative humidity
-* 13. Add values to batches and process
-* 14. Delete all files and cleanup
+1. FTP to NOAA and download isd-history.csv - file includes all stations and data ranges for each
+2. Load CSV into ArrayList
+3. Filter down list to only include lines with WBAN numbers and with END dates greater than 2018
+4. Get list of years of END dates from file (currently 2018, potentially more as years progress)
+5. Insert any missing station IDs into stations table in database
+6. Step through stations, calculate time zone for station based on latitude/longitude 
+7. insert any new stations and update existing stations
+8. for each station, download gzip files from FTP
+9. Unzip file in memory
+10. Step through file and use ishJava to convert weather file to ArrayList
+11. convert GMT timestamp to local time
+12. calculate wet bulb and relative humidity
+13. Add values to batches and process
+14. Delete all files and cleanup
 
 ## Getting Started
 
