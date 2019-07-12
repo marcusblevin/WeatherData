@@ -23,12 +23,12 @@ public class runImport {
         String databaseName		= p.getProperty("databaseName").trim();
         
         // Overriders here if you want to do it manually
-        //databaseName			= "Weather_Test";
-        //filepath				= "C:/Users/mlevin/Documents/Projects/WeatherData4.0/WeatherFiles/";
+        databaseName			= "Weather_Test";
+        filepath				= "C:/Users/mlevin/Documents/GitHub/WeatherData/WeatherFiles/";
         //webroot				= "c:/Users/mlevin/Documents/Projects/WeatherData4.0/";
-        //connectionURLDex     = "jdbc:sqlserver://REMEE2.graphet.local;DatabaseName=weather_shared;packetSize=0";
- 	    //username             = "jdbcaccess";
- 	    //password             = "jdbc";
+        connectionURL     		= "jdbc:sqlserver://thor.graphet.local;Instance=THOR;DatabaseName=";
+ 	    username             = "jdbcaccess";
+ 	    password             = "jdbc";
         
         /*
          * 1. FTP to NOAA and download isd-history.csv - file includes all stations and data ranges for each

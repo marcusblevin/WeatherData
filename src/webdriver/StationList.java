@@ -37,6 +37,7 @@ public class StationList {
 	 * get station file to list all available stations and range available
 	 */
 	public void getStationFile() throws SocketException, IOException {
+		log.message(filePath+stationFile);
 		new FTP(baseUrl, filePath+stationFile, stationFile);
 	}
 	
@@ -53,7 +54,7 @@ public class StationList {
 			line				= line.replaceAll("\"", ""); // remove quotes from line
 			String[] lineArr 	= line.split(",");
 			
-			if (!lineArr[1].isEmpty() && !lineArr[1].equals("99999") && lineArr[3].equals("US")) { // make sure WBAN is not blank or invalid and only US stations
+			if (!lineArr[1].isEmpty() && !lineArr[1].equals("99999") && lineArr[1].endsWith("0") && lineArr[3].equals("US")) { // make sure WBAN is not blank or invalid and only US stations
 				
 				Station s = new Station(lineArr[0], lineArr[1], lineArr[2], lineArr[3], lineArr[4], lineArr[5], lineArr[6], lineArr[7], lineArr[8], lineArr[9], lineArr[10]);
 				
