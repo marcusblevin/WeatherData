@@ -43,33 +43,29 @@ public class WeatherFile {
 	private void processFile(String stationFile) {
 		File f 				= new File(stationFile);
 		try {
-			if (f.length() > 0) {
-				InputStream fs 		= new FileInputStream(f);			
-				InputStream gs 		= new GZIPInputStream(fs);
-				Reader decoder 		= new InputStreamReader(gs, "UTF-8"); // assuming the character encoding
-				BufferedReader br 	= new BufferedReader(decoder);
-				
-				ishJava ish					= new ishJava();
-				String line					= "";
-				HashMap<String, String> map = null;
-				
-				while ((line = br.readLine()) != null) {
-					map = ish.parseLine(line);
-	
-					if (map != null) {
-						wl.add(map);
-					}
+			InputStream fs 		= new FileInputStream(f);
+			InputStream gs 		= new GZIPInputStream(fs);
+			Reader decoder 		= new InputStreamReader(gs, "UTF-8"); // assuming the character encoding
+			BufferedReader br 	= new BufferedReader(decoder);
+			
+			ishJava ish					= new ishJava();
+			String line					= "";
+			HashMap<String, String> map = null;
+			
+			while ((line = br.readLine()) != null) {
+				map = ish.parseLine(line);
+
+				if (map != null) {
+					wl.add(map);
 				}
-				
-				//log.message("Weather Records: "+wl.size());
-				
-				br.close();
-				decoder.close();
-				gs.close();
-				fs.close();
-			} else {
-				log.message("File size is 0 bytes");
 			}
+			
+			//log.message("Weather Records: "+wl.size());
+			
+			br.close();
+			decoder.close();
+			gs.close();
+			fs.close();
 		} catch (FileNotFoundException e) {
 			log.message("File Not Found");
 			e.printStackTrace();
